@@ -1,70 +1,101 @@
-# Getting Started with Create React App
+# 🦠 La Casa De Covid
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Modern ve şık tasarımlı COVID-19 istatistik takip uygulaması. Dünya genelinde ve ülke bazında COVID-19 verilerini gerçek zamanlı olarak görüntüleyin.
 
-## Available Scripts
+![React](https://img.shields.io/badge/React-18.2.0-61DAFB?style=flat-square&logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-4.4.3-3178C6?style=flat-square&logo=typescript)
+![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
 
-In the project directory, you can run:
+## ✨ Özellikler
 
-### `yarn start`
+- 🌍 **Global İstatistikler** - Dünya geneli toplam vaka, ölüm, aktif vaka ve iyileşen sayıları
+- 🔍 **Ülke Arama** - 200+ ülke arasında arama yapabilme (A-Z sıralı)
+- 🏛️ **Bölge/Eyalet Verileri** - Seçilen ülkenin bölge/eyalet bazlı detaylı verileri
+- 🏙️ **Şehir Verileri** - Varsa şehir bazlı COVID-19 istatistikleri
+- 📊 **Gerçek Zamanlı Veri** - covid-api.com API'si ile güncel veriler
+- 💾 **Akıllı Önbellekleme** - 24 saat localStorage cache ile hızlı yükleme
+- 🎨 **Premium Tasarım** - Glassmorphism ve gradient efektleri ile modern UI
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 🛠️ Teknolojiler
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+| Teknoloji | Versiyon | Açıklama |
+|-----------|----------|----------|
+| React | 18.2.0 | UI Framework |
+| TypeScript | 4.4.3 | Tip güvenliği |
+| Axios | 0.21.4 | HTTP istekleri |
+| React Router | 6.3.0 | Sayfa yönlendirme |
 
-### `yarn test`
+## 📁 Proje Yapısı
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+src/
+├── components/
+│   ├── ui/                      # UI Bileşenleri
+│   │   ├── region-select.tsx    # Ülke arama select
+│   │   ├── location-search-select.tsx # Bölge/Şehir arama
+│   │   ├── button.tsx           # Button bileşeni
+│   │   ├── card.tsx             # Card bileşeni
+│   │   └── ...
+│   ├── Header.tsx               # Uygulama header'ı
+│   ├── Layout.tsx               # Ana layout
+│   ├── CovidGlobal.tsx          # Global istatistik kartları
+│   ├── CovidSummary.tsx         # Ülke özet listesi
+│   └── SummaryCard.tsx          # Ülke özet kartı
+├── services/
+│   ├── region.services.ts       # Ülke listesi servisi (24s cache)
+│   ├── summary.services.ts      # Global veriler servisi (24s cache)
+│   └── country.services.ts      # Ülke detay servisi
+├── types/
+│   └── summary.type.ts          # TypeScript tipleri
+├── pages/
+│   └── Home.tsx                 # Ana sayfa
+└── index.tsx                    # Uygulama girişi
+```
 
-### `yarn build`
+## 🚀 Kurulum
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+# Repoyu klonlayın
+git clone https://github.com/zzafergok/covidlist.git
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Proje dizinine gidin
+cd covidlist
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Bağımlılıkları yükleyin
+yarn install
 
-### `yarn eject`
+# Geliştirme sunucusunu başlatın
+yarn start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Uygulama [http://localhost:3000](http://localhost:3000) adresinde açılacaktır.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 📜 Kullanılabilir Scriptler
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+| Script | Açıklama |
+|--------|----------|
+| `yarn start` | Geliştirme modunda uygulamayı başlatır |
+| `yarn build` | Production build oluşturur |
+| `yarn eject` | CRA yapılandırmasını dışa aktarır |
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## 🌐 API
 
-## Learn More
+Uygulama [covid-api.com](https://covid-api.com) API'sini kullanmaktadır.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Kullanılan Endpointler
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+| Endpoint | Açıklama | Cache |
+|----------|----------|-------|
+| `/reports/total` | Global toplam veriler | 24 saat |
+| `/regions` | Ülke listesi | 24 saat |
+| `/reports?iso=XXX` | Ülke detay verileri | Yok |
 
-### Code Splitting
+## 📄 Lisans
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Bu proje MIT lisansı altında lisanslanmıştır.
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<p align="center">
+  Made with ❤️ by <a href="https://github.com/zzafergok">Zafer Gök</a>
+</p>
