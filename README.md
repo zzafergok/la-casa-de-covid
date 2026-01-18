@@ -57,14 +57,11 @@ src/
     └── Home.tsx                 # Ana sayfa (Page Template)
 ```
 
-## 🚀 Kurulum
-
-```bash
 # Repoyu klonlayın
-git clone https://github.com/zzafergok/covidlist.git
+git clone https://github.com/zzafergok/la-casa-de-covid.git
 
 # Proje dizinine gidin
-cd covidlist
+cd la-casa-de-covid
 
 # Bağımlılıkları yükleyin
 yarn install
