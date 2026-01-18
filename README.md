@@ -1,55 +1,60 @@
 # 🦠 La Casa De Covid
 
-Modern ve şık tasarımlı COVID-19 istatistik takip uygulaması. Dünya genelinde ve ülke bazında COVID-19 verilerini gerçek zamanlı olarak görüntüleyin.
+Modern, şık tasarımlı ve yüksek performanslı COVID-19 istatistik takip uygulaması. Dünya genelinde ve ülke bazında COVID-19 verilerini gerçek zamanlı olarak görüntüleyin.
 
-![React](https://img.shields.io/badge/React-18.2.0-61DAFB?style=flat-square&logo=react)
-![TypeScript](https://img.shields.io/badge/TypeScript-4.4.3-3178C6?style=flat-square&logo=typescript)
+![React](https://img.shields.io/badge/React-18.3.1-61DAFB?style=flat-square&logo=react)
+![Vite](https://img.shields.io/badge/Vite-6.0.0-646CFF?style=flat-square&logo=vite)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0.0-3178C6?style=flat-square&logo=typescript)
 ![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
 
 ## ✨ Özellikler
 
 - 🌍 **Global İstatistikler** - Dünya geneli toplam vaka, ölüm, aktif vaka ve iyileşen sayıları
-- 🔍 **Ülke Arama** - 200+ ülke arasında arama yapabilme (A-Z sıralı)
+- 🔍 **Ülke Arama** - 200+ ülke arasında hızlı arama (A-Z sıralı)
 - 🏛️ **Bölge/Eyalet Verileri** - Seçilen ülkenin bölge/eyalet bazlı detaylı verileri
 - 🏙️ **Şehir Verileri** - Varsa şehir bazlı COVID-19 istatistikleri
 - 📊 **Gerçek Zamanlı Veri** - covid-api.com API'si ile güncel veriler
-- 💾 **Akıllı Önbellekleme** - 24 saat localStorage cache ile hızlı yükleme
-- 🎨 **Premium Tasarım** - Glassmorphism ve gradient efektleri ile modern UI
+- 💾 **Akıllı Önbellekleme** - 24 saat localStorage cache ile min. API isteği
+- ⚡ **Yüksek Performans** - Vite tabanlı hızlı geliştirme ve build
+- 🎨 **Premium Tasarım** - Glassmorphism, gradient efektler ve animasyonlar
+- 🧩 **Atomic Design** - Atom, Molekül ve Organizma yapısına dayalı modüler mimari
 
 ## 🛠️ Teknolojiler
 
-| Teknoloji | Versiyon | Açıklama |
-|-----------|----------|----------|
-| React | 18.2.0 | UI Framework |
-| TypeScript | 4.4.3 | Tip güvenliği |
-| Axios | 0.21.4 | HTTP istekleri |
-| React Router | 6.3.0 | Sayfa yönlendirme |
+| Teknoloji | Açıklama |
+|-----------|----------|
+| **React 18** | UI Kütüphanesi |
+| **Vite** | Build Tool & Dev Server |
+| **TypeScript** | Tip Güvenliği |
+| **Axios** | HTTP İstekleri |
+| **Lucide React** | Modern İkon Seti |
+| **CSS Modules** | Özelleştirilmiş Styling |
 
-## 📁 Proje Yapısı
+## 📁 Proje Yapısı (Atomic Design)
+
+Proje, **Atomic Design** metodolojisine uygun olarak yeniden yapılandırılmıştır:
 
 ```
 src/
 ├── components/
-│   ├── ui/                      # UI Bileşenleri
-│   │   ├── region-select.tsx    # Ülke arama select
+│   ├── home/                    # Home sayfası bileşenleri
+│   │   ├── atoms/               # Temel yapı taşları (Badge, StatBox)
+│   │   ├── molecules/           # Birleşik bileşenler (Card, DetailCard)
+│   │   └── organisms/           # Karmaşık bölümler (Grid, FilterSection)
+│   ├── ui/                      # Genel UI setleri
+│   │   ├── region-select.tsx    # Ülke seçimi
 │   │   ├── location-search-select.tsx # Bölge/Şehir arama
-│   │   ├── button.tsx           # Button bileşeni
-│   │   ├── card.tsx             # Card bileşeni
 │   │   └── ...
-│   ├── Header.tsx               # Uygulama header'ı
-│   ├── Layout.tsx               # Ana layout
-│   ├── CovidGlobal.tsx          # Global istatistik kartları
-│   ├── CovidSummary.tsx         # Ülke özet listesi
-│   └── SummaryCard.tsx          # Ülke özet kartı
+│   ├── Layout.tsx               # Ana şablon
+│   └── Header.tsx               # Üst bar
 ├── services/
-│   ├── region.services.ts       # Ülke listesi servisi (24s cache)
-│   ├── summary.services.ts      # Global veriler servisi (24s cache)
+│   ├── region.services.ts       # Bölge servisi
+│   ├── summary.services.ts      # Özet servisi
 │   └── country.services.ts      # Ülke detay servisi
-├── types/
-│   └── summary.type.ts          # TypeScript tipleri
-├── pages/
-│   └── Home.tsx                 # Ana sayfa
-└── index.tsx                    # Uygulama girişi
+├── types/                       # TypeScript tanımları
+├── assets/                      # Stil ve görseller
+└── pages/
+    └── Home.tsx                 # Ana sayfa (Page Template)
 ```
 
 ## 🚀 Kurulum
@@ -65,18 +70,18 @@ cd covidlist
 yarn install
 
 # Geliştirme sunucusunu başlatın
-yarn start
+yarn dev
 ```
 
-Uygulama [http://localhost:3000](http://localhost:3000) adresinde açılacaktır.
+Uygulama [http://localhost:5173](http://localhost:5173) adresinde açılacaktır.
 
 ## 📜 Kullanılabilir Scriptler
 
 | Script | Açıklama |
 |--------|----------|
-| `yarn start` | Geliştirme modunda uygulamayı başlatır |
-| `yarn build` | Production build oluşturur |
-| `yarn eject` | CRA yapılandırmasını dışa aktarır |
+| `yarn dev` | Vite geliştirme sunucusunu başlatır |
+| `yarn build` | Production için optimize build alır |
+| `yarn preview` | Build alınan projeyi önizler |
 
 ## 🌐 API
 
