@@ -1,12 +1,13 @@
-import axios from 'axios';
-import {
-  IReportsTotalResponse,
-  ISummariesData,
-  IGlobalData,
-} from '../types/summary.type';
+import axios from "axios";
 
-const API_BASE_URL = 'https://covid-api.com/api';
-const CACHE_KEY = 'covid_reports_total_cache';
+import {
+  IGlobalData,
+  ISummariesData,
+  IReportsTotalResponse,
+} from "../types/summary.type";
+
+const CACHE_KEY = "covid_reports_total_cache";
+const API_BASE_URL = "https://covid-api.com/api";
 const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 saat (milisaniye)
 
 interface CacheData {
@@ -52,7 +53,9 @@ class SummariesDataService {
       };
     }
 
-    const response = await axios.get<IReportsTotalResponse>(`${API_BASE_URL}/reports/total`);
+    const response = await axios.get<IReportsTotalResponse>(
+      `${API_BASE_URL}/reports/total`,
+    );
     const globalData = response.data.data;
 
     this.saveToCache(globalData);

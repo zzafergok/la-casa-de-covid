@@ -1,8 +1,9 @@
-import axios from 'axios';
-import { IRegionsResponse, IRegion } from '../types/summary.type';
+import axios from "axios";
 
-const API_BASE_URL = 'https://covid-api.com/api';
-const CACHE_KEY = 'covid_regions_cache';
+import { IRegionsResponse, IRegion } from "../types/summary.type";
+
+const CACHE_KEY = "covid_regions_cache_v2";
+const API_BASE_URL = "https://covid-api.com/api";
 const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 saat (milisaniye)
 
 interface CacheData {
@@ -45,8 +46,20 @@ class RegionDataService {
       return cachedData;
     }
 
-    const response = await axios.get<IRegionsResponse>(`${API_BASE_URL}/regions`);
-    const data = response.data.data;
+    const response = await axios.get<IRegionsResponse>(
+      `${API_BASE_URL}/regions`,
+    );
+    const rawData = response.data.data;
+
+    // Deduplicate based on ISO to prevent "duplicate key" errors
+    const uniqueMap = new Map<string, IRegion>();
+    rawData.forEach((item) => {
+      if (!uniqueMap.has(item.iso)) {
+        uniqueMap.set(item.iso, item);
+      }
+    });
+
+    const data = Array.from(uniqueMap.values());
 
     this.saveToCache(data);
 

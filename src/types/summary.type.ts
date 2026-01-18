@@ -7,16 +7,16 @@ export interface IReportsTotalResponse {
 
 export interface IGlobalData {
   date: string;
-  last_update: string;
-  confirmed: number;
-  confirmed_diff: number;
   deaths: number;
-  deaths_diff: number;
-  recovered: number;
-  recovered_diff: number;
   active: number;
+  recovered: number;
+  confirmed: number;
+  last_update: string;
+  deaths_diff: number;
   active_diff: number;
   fatality_rate: number;
+  confirmed_diff: number;
+  recovered_diff: number;
 }
 
 // Response from /regions
@@ -36,39 +36,39 @@ export interface ICountryReportsResponse {
 
 export interface ICountryReport {
   date: string;
-  confirmed: number;
   deaths: number;
-  recovered: number;
-  confirmed_diff: number;
-  deaths_diff: number;
-  recovered_diff: number;
-  last_update: string;
   active: number;
+  confirmed: number;
+  recovered: number;
+  deaths_diff: number;
+  last_update: string;
   active_diff: number;
   fatality_rate: number;
   region: IReportRegion;
+  confirmed_diff: number;
+  recovered_diff: number;
 }
 
 export interface IReportRegion {
   iso: string;
-  name: string;
-  province: string;
   lat: string;
+  name: string;
   long: string;
   cities: ICity[];
+  province: string;
 }
 
 export interface ICity {
   name: string;
   date: string;
-  fips: number | null;
-  lat: string | null;
-  long: string | null;
-  confirmed: number;
   deaths: number;
-  confirmed_diff: number;
+  confirmed: number;
+  lat: string | null;
+  fips: number | null;
+  long: string | null;
   deaths_diff: number;
   last_update: string;
+  confirmed_diff: number;
 }
 
 // Combined data structure for the app (backward compatible)
@@ -79,10 +79,10 @@ export interface ISummariesData {
 
 export interface ICountriesData {
   iso: string;
+  Date: string;
   Country: string;
-  NewConfirmed: number;
-  TotalConfirmed: number;
   NewDeaths: number;
   TotalDeaths: number;
-  Date: string;
+  NewConfirmed: number;
+  TotalConfirmed: number;
 }
