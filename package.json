@@ -1,5 +1,5 @@
 {
-  "name": "covidlist",
+  "name": "la-casa-de-covid",
   "version": "1.0.0",
   "description": "Modern COVID-19 statistics tracker with premium UI and real-time data.",
   "author": "Zafer Gök",
@@ -8,7 +8,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/zzafergok/covidlist.git"
+    "url": "https://github.com/zzafergok/la-casa-de-covid.git"
   },
   "keywords": [
     "react",
